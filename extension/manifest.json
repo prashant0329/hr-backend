@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Naukri Client Duplicate Checker",
+  "version": "1.0",
+  "description": "Checks candidate duplicate status in PeopleStrong & RippleHire and logs to backend.",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.naukri.com/*",
+    "*://*.peoplestrong.com/*",
+    "*://*.ripplehire.com/*",
+    "https://hr-backend-ry9s.onrender.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.naukri.com/*"],
+      "js": ["content-naukri.js"]
+    },
+    {
+      "matches": ["*://*.peoplestrong.com/*"],
+      "js": ["content-peoplestrong.js"]
+    },
+    {
+      "matches": ["*://*.ripplehire.com/*"],
+      "js": ["content-ripplehire.js"]
+    }
+  ]
+}
